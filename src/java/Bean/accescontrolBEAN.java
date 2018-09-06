@@ -4,6 +4,8 @@ package Bean;
 import javax.annotation.ManagedBean;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.component.behavior.FacesBehavior;
+import javax.faces.context.FacesContext;
 
 
 @Named(value = "accescontrolBEAN")
@@ -30,18 +32,48 @@ public class accescontrolBEAN {
         this.key = key;
     }
     
+      public boolean isSesion() {
+        return sesion;
+    }
+
+    public void setSesion(boolean sesion) {
+        this.sesion = sesion;
+    }
     
-    public String val(){
+    public String val(){        
     if((this.login.equalsIgnoreCase("LUIS"))&&(this.key.equals("Admin123"))){
-        return "Bienvenido";
+        sesion=true; // para ocultar contenido en el form
+        return "Bienvenido";          
     }else{
+        sesion=false;
      return "error";    
     }      
  }
     
     
+    /*
+    public boolean verificarSesion(){
     
+    boolean estado;
+    if(FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get(login)==null){
+        estado=false;
+    } else{
+        estado=true;
+    }
+    return estado;
+    
+ }
+    
+    
+    
+    public String cerrarSesion(){
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        return"index?faces-redirect=true";
+    }
+    
+    */
     
     private String login;
     private String key;
+    boolean sesion=false;
 }

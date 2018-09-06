@@ -7,12 +7,9 @@
     </h:head>
     <h:body>
         <h:form>
-            
             login: <h:inputText id="login" size="15" required="true" requiredMessage="Campos necesarios" value="#{accescontrolBEAN.login}"/>
             Password: <h:inputSecret id="key" size="15" required="true" requiredMessage="Campos necesarios" value="#{accescontrolBEAN.key}"/>
-            
-            
-            <h:commandButton value="Enviar" action="#{accescontrolBEAN.val()}"></h:commandButton>
+           <h:commandButton value="Enviar" action="#{accescontrolBEAN.val()}"></h:commandButton>
         </h:form>
     </h:body>
 </html>
